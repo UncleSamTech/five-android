@@ -69,8 +69,16 @@ public class SourceCheckSettings extends Activity
 
 		setContentView(R.layout.source_check_settings);
 
-		Button cancel = (Button)findViewById(R.id.cancel);
-		cancel.setVisibility(View.VISIBLE);
+		
+		
+		
+		/**
+		Here the method getButton() is called and passed the 
+		reference to the id of the button instead of reinstantiating and referencing it afresh
+		Doing this, this will remove lots of code repetion and save memory..thanks
+		Linkedin address = https://www.linkedin.com/in/samueltech/
+		*/
+		getButton(R.id.cancel).setVisibility(View.VISIBLE);
 
 		findViewById(R.id.next).setVisibility(View.GONE);
 
@@ -93,6 +101,17 @@ public class SourceCheckSettings extends Activity
 		mThreadSent = true;
 		mThread.setActivity(null);
 		return mThread;
+	}
+	
+	/**
+	Suggested an easier way for referencing the button view
+	by creating a method of return type Button named
+	@method getButton() that accepts a single parameter of type integer
+	@params id
+	*/
+	private Button getButton(int id){
+	Button but = (Button)findViewById(id);
+	return but;
 	}
 
 	@Override
